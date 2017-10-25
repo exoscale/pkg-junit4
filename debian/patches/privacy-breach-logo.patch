@@ -1,0 +1,25 @@
+From: Markus Koschany <apo@debian.org>
+Date: Sun, 20 Dec 2015 21:54:06 +0100
+Subject: privacy breach logo
+
+Fix Lintian error:
+https://lintian.debian.org/tags/privacy-breach-logo.html
+
+Forwarded: not-needed
+---
+ doc/homepage.html | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/doc/homepage.html b/doc/homepage.html
+index 69c6248..7384208 100644
+--- a/doc/homepage.html
++++ b/doc/homepage.html
+@@ -108,7 +108,7 @@ There are three junit mailing lists:
+ 
+ <hr WIDTH="100%">
+ <font size="1">
+-hosted by </font> <A href="http://sourceforge.net"><IMG src="http://sourceforge.net/sflogo.php?group_id=15278" width="88" height="31"
++hosted by </font> <A href="http://sourceforge.net"><IMG src="" width="88" height="31"
+ border="0" alt="SourceForge Logo"></A>
+ </font>
+ 

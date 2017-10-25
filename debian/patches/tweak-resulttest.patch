@@ -1,0 +1,16 @@
+--- a/src/test/java/junit/tests/runner/ResultTest.java
++++ b/src/test/java/junit/tests/runner/ResultTest.java
+@@ -36,13 +36,6 @@ public class ResultTest extends TestCase
+         ObjectInputStream objectInputStream = new ObjectInputStream(new ByteArrayInputStream(bytes));
+         Result fromStream = (Result) objectInputStream.readObject();
+         assertSerializedCorrectly(result, fromStream);
+-
+-        InputStream resource = getClass().getResourceAsStream(getName());
+-        assertNotNull("Could not read resource " + getName(), resource);
+-        objectInputStream = new ObjectInputStream(resource);
+-        fromStream = (Result) objectInputStream.readObject();
+-        
+-        assertSerializedCorrectly(new ResultWithFixedRunTime(result), fromStream);
+     }
+ 
+     /**

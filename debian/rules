@@ -1,0 +1,35 @@
+#!/usr/bin/make -f
+export JAVA_HOME=/usr/lib/jvm/default-java
+
+include /usr/share/cdbs/1/class/ant.mk
+include /usr/share/cdbs/1/rules/debhelper.mk
+
+PACKAGE              := $(DEB_SOURCE_PACKAGE)
+VERSION              := $(DEB_UPSTREAM_VERSION)
+JAVA_HOME	     := /usr/lib/jvm/default-java
+DEB_ANT_BUILD_TARGET := dist
+DEB_ANT_BUILDFILE := debian/build.xml
+DEB_JARS	     := ant-nodeps hamcrest-core
+
+binary-post-install/junit4::
+	sed "s/@artifactId@/junit/;s/@version@/$(VERSION)/" debian/junit-pom-template.xml > debian/pom.xml
+	mh_installpoms -pjunit4
+	mh_installjar -pjunit4 -njunit4 -l debian/pom.xml junit$(VERSION)/junit-dep-$(VERSION).jar
+	jh_manifest -pjunit4
+
+binary-post-install/junit4-doc::
+	dh_install -pjunit4-doc junit$(VERSION)/javadoc/* /usr/share/doc/junit4/api/
+
+clean::
+	-rm debian/pom.xml
+	-rm src/main/java/junit/runner/Version.java
+	mh_clean
+
+upstream-from-git:
+	git-archive --format=tar --prefix=junit4-$(DEB_UPSTREAM_VERSION)/ \
+		v$(DEB_UPSTREAM_VERSION) | gzip -9 \
+		> ../junit4_$(DEB_UPSTREAM_VERSION).orig.tar.gz
+
+get-orig-source:
+	-uscan --upstream-version 0 --rename
+

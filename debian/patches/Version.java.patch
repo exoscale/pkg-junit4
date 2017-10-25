@@ -1,0 +1,26 @@
+From: Markus Koschany <apo@debian.org>
+Date: Wed, 16 Dec 2015 23:07:09 +0100
+Subject: Version.java
+
+Work around to avoid the build-depends on the maven replacer plugin which
+causes a FTBFS for unknown reasons.
+
+Bug: https://bugs.debian.org/808494
+Forwarded: not-needed
+---
+ src/main/java/junit/runner/Version.java | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/main/java/junit/runner/Version.java b/src/main/java/junit/runner/Version.java
+index eaf3db7..d4e2515 100644
+--- a/src/main/java/junit/runner/Version.java
++++ b/src/main/java/junit/runner/Version.java
+@@ -9,7 +9,7 @@ public class Version {
+ 	}
+ 
+ 	public static String id() {
+-		return "4.12-SNAPSHOT";
++		return "4.12";
+ 	}
+ 	
+ 	public static void main(String[] args) {
