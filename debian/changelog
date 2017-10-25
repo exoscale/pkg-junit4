@@ -1,3 +1,9 @@
+junit4 (4.12-4ubuntu1~precise0+exo1) precise; urgency=medium
+
+  * Backport for Precise.
+
+ -- Vincent Bernat <bernat@debian.org>  Wed, 25 Oct 2017 21:37:52 +0200
+
 junit4 (4.12-4ubuntu1) xenial; urgency=low
 
   * Merge from Debian unstable.  Remaining changes:
